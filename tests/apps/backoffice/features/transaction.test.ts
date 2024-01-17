@@ -49,7 +49,6 @@ describe('Check the transaction api', () => {
     expect(transactions.length).toBeGreaterThan(0)
 
     const transactionId = transactions[0].id
-    console.log('🚀 ~ it ~ transactionId:', transactionId)
 
     await request(application.httpServer).delete(`/v1/transaction/${transactionId}`).send({
       id: transactionId
