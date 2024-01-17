@@ -16,8 +16,8 @@ afterAll(async () => {
 })
 
 describe('Check the transaction api', () => {
-  it('I send a GET request to /v1/transactions, it should return 200', async () => {
-    const response = await request(application.httpServer).get('/v1/transactions')
+  it('I send a GET request to /v1/transaction, it should return 200', async () => {
+    const response = await request(application.httpServer).get('/v1/transaction')
 
     expect(response.statusCode).toEqual(200)
     expect(response.headers['content-type']).toEqual('application/json; charset=utf-8')
@@ -41,7 +41,7 @@ describe('Check the transaction api', () => {
   })
 
   it('I send a DELETE request to /v1/transaction, it should return 200', async () => {
-    const response = await request(application.httpServer).get('/v1/transactions')
+    const response = await request(application.httpServer).get('/v1/transaction')
 
     const transactions = response.body.data
 
@@ -49,6 +49,7 @@ describe('Check the transaction api', () => {
     expect(transactions.length).toBeGreaterThan(0)
 
     const transactionId = transactions[0].id
+    console.log('🚀 ~ it ~ transactionId:', transactionId)
 
     await request(application.httpServer).delete(`/v1/transaction/${transactionId}`).send({
       id: transactionId

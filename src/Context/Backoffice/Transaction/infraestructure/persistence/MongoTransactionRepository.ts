@@ -61,7 +61,7 @@ export class MongoTransactionRepository extends MongoRepository<Transaction, Tra
   public async delete (id: string): Promise<void> {
     const repository = await this.collection()
 
-    await repository.deleteOne({ id: new TransactionId(id) })
+    await repository.deleteOne({ id })
   }
 
   protected collectionName () {
