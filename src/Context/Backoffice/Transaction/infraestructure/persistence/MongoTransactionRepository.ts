@@ -6,7 +6,6 @@ import type { TransactionRepository } from '../../domain/TransactionRepository'
 import { MongoRepository } from '../../../../Shared/infraestructure/persistence/mongo/MongoRepository'
 
 import { AppContextEnum } from '../../../../../apps/AppContext'
-import { TransactionId } from '../../domain/TransactionId'
 
 import { type FindOptions } from 'mongodb'
 
