@@ -1,0 +1,48 @@
+node_modules/
+
+data/
+dist/
+public/
+public/swagger.json
+
+yarn-error.log
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+*lock.yaml
+bun.lockb
+
+.env.*
+.env
+.env.test
+.env.development
+!.env.example
+
+.serverless/
+
+.aws/credentials
+
+# Terraform files
+# Local .terraform directories
+.terraform
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+*.tfvars
+
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+.terraformrc
+terraform.rc
+dist.zip
+response.json

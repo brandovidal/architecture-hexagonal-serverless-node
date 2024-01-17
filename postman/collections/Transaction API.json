@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "9200ccdf-10dd-4130-ab3f-b4c456715e59",
+		"name": "Transaction API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "26205731-9200ccdf-10dd-4130-ab3f-b4c456715e59"
+	},
+	"item": [
+		{
+			"name": "List transactions",
+			"id": "ebf12104-b22c-4ba2-92d8-de67d20661a2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{PANEL_API_URL}}/v1/transactions",
+					"host": [
+						"{{PANEL_API_URL}}"
+					],
+					"path": [
+						"v1",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create transaction",
+			"id": "1d6dbb24-cc51-425b-947b-14261a03e99c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"seller_domain\": \"hola.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{PANEL_API_URL}}/v1/transaction",
+					"host": [
+						"{{PANEL_API_URL}}"
+					],
+					"path": [
+						"v1",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

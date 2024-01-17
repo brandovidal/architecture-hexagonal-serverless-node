@@ -1,0 +1,54 @@
+frameworkVersion: '3'
+
+service: serverless-brandovidal
+
+custom:
+  config: ${file(./config/serverless/helpers/custom-config.js)}
+  dotenv:
+    path: ${file(./config/serverless/helpers/env-file-resolver.js)}
+  esbuild:
+    bundle: true
+    minify: true
+    watch:
+      pattern: ['lambda.ts', 'src/**/*.ts', 'apps/**/*.ts', 'config/**/*.js']
+      ignore: ['config/serverless/*']
+  prune:
+    automatic: true
+    includeLayers: true
+    number: 5
+
+params:
+  default:
+    timeout: 29 # API Gateway has a maximum timeout of 30 seconds
+  dev:
+    timeout: 6
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  region: ${self:custom.config.region}
+  runtime: nodejs18.x
+  timeout: ${param:timeout}
+  httpApi:
+    cors: true
+  deploymentBucket: # bucket to store lambda deploy config
+    name: ${self:custom.config.deploymentBucket}
+    blockPublicAccess: true
+    versioning: true
+    tags:
+      app: serverless
+      bucket: ${self:custom.config.deploymentBucket}
+
+functions:
+  api:
+    handler: dist/lambda.handler
+    events:
+      - httpApi: '*'
+    environment:
+      NODE_ENV: ${self:custom.config.nodeEnv}
+
+plugins:
+  - serverless-dotenv-plugin # https://www.serverless.com/framework/docs/environment-variables
+  - serverless-esbuild
+  - serverless-prune-plugin
+  - serverless-offline
